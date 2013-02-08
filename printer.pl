@@ -1,6 +1,10 @@
 #!/usr/bin/perl
-@strategies = ('Clock', 'LRU', 'MRU');
 
+my @strategies = ('clock', 'lru', 'mru');
+
+print "<html><head><title>Performance Results</title>";
+print '<link href="bootstrap.css" media="screen" rel="stylesheet" type="text/css">';
+print "</head></body>";
 print "<table><tr><th></th><th>Clock</th><th>LRU</th><th>MRU</th></tr>";
 
 for ($bufsize=16; $bufsize<=240; $bufsize+=16) {
@@ -15,4 +19,4 @@ for ($bufsize=16; $bufsize<=240; $bufsize+=16) {
 	}
 	print "</tr>\n";
 }
-print "</table>";
+print "</table></body></html>";
