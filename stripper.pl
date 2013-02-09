@@ -14,4 +14,4 @@ while (<B>) {
     $diffHit = $2 - $preHit;
 }
 close B;
-print $diffRead / ($diffHit + $diffRead), "\n";
+print $diffHit / ($diffHit + $diffRead), "\n";

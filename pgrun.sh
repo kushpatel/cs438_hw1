@@ -8,4 +8,4 @@ for strat in "${strats[@]}"; do
 	./pgtest.sh $strat
 done
 ./printer.pl > results.html
-# rm tf*
+rm tf*
