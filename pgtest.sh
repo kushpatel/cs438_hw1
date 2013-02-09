@@ -17,15 +17,19 @@ else
 				echo "Iteration $i"
 				~/pgsql/bin/psql test -p 4444 -c "SELECT blks_read,blks_hit FROM pg_stat_database WHERE datname='test';" > pre
 				~/pgsql/bin/psql test -p 4444 -c "SELECT * FROM raw_r_tuples;" > tuples
-				#~/pgsql/bin/psql test -p 4444 -c "SELECT * FROM raw_r_tuples r, raw_s_tuples s WHERE r.pkey = s.pkey;" > tuples
 				~/pgsql/bin/psql test -p 4444 -c "SELECT blks_read,blks_hit FROM pg_stat_database WHERE datname='test';" > post
-				./stripper.pl pre post > tf.$buffSize.$1.$i
+				./stripper.pl pre post > tf.$buffSize.$1.$i.q1
+				~/pgsql/bin/psql test -p 4444 -c "SELECT blks_read,blks_hit FROM pg_stat_database WHERE datname='test';" > pre
+				~/pgsql/bin/psql test -p 4444 -c "SELECT * FROM raw_r_tuples r, raw_s_tuples s WHERE r.pkey = s.pkey;" > tuples
+				~/pgsql/bin/psql test -p 4444 -c "SELECT blks_read,blks_hit FROM pg_stat_database WHERE datname='test';" > post
+				./stripper.pl pre post > tf.$buffSize.$1.$i.q2
 			done
 		fi
 		~/pgsql/bin/pg_ctl -D ~/pgdata stop && sleep 1s
 		let buffSize=buffSize+16
 	done
-	./printer.pl $1 > results.html
+	./printer.pl q1 $1 > results.html
+	./printer.pl q2 $1 > results2.html
 	rm pre
 	rm post
 	rm tuples

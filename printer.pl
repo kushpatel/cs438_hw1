@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-my @strategies = @ARGV ? ( $ARGV[0] ) : ('clock', 'lru', 'mru');
+my @strategies = @ARGV ? ( $ARGV[1] ) : ('clock', 'lru', 'mru');
 
 print <<HTML;
 <html>
@@ -22,7 +22,7 @@ for ($bufsize=16; $bufsize<=240; $bufsize+=16) {
 	foreach (@strategies) {
 		print "<td>";
 		for ($i=1; $i<=3; $i++) {
-		    open FILE, "tf.$bufsize.$_.$i" or die "No files for strategy $_";	
+		    open FILE, "tf.$bufsize.$_.$i.$ARGV[0]" or die "No files for strategy $_";	
 			printf("%4f ", <FILE>);
 			print "| " unless ($i == 3);
 		}

@@ -7,5 +7,6 @@ for strat in "${strats[@]}"; do
 	cd ../hw1
 	./pgtest.sh $strat
 done
-./printer.pl > results.html
+./printer.pl q1 > results1.html
+./printer.pl q2 > results2.html
 rm tf*
