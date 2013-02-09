@@ -28,8 +28,6 @@ else
 		~/pgsql/bin/pg_ctl -D ~/pgdata stop && sleep 1s
 		let buffSize=buffSize+16
 	done
-	./printer.pl q1 $1 > results.html
-	./printer.pl q2 $1 > results2.html
 	rm pre
 	rm post
 	rm tuples

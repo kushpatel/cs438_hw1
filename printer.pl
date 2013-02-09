@@ -2,6 +2,8 @@
 
 my @strategies = @ARGV ? ( $ARGV[1] ) : ('clock', 'lru', 'mru');
 
+print STDERR "$ARGV[0]";
+
 print <<HTML;
 <html>
 	<head>
@@ -23,7 +25,7 @@ for ($bufsize=16; $bufsize<=240; $bufsize+=16) {
 		print "<td>";
 		for ($i=1; $i<=3; $i++) {
 		    open FILE, "tf.$bufsize.$_.$i.$ARGV[0]" or die "No files for strategy $_";	
-			printf("%4f ", <FILE>);
+			printf("%2f ", 100 * <FILE>);
 			print "| " unless ($i == 3);
 		}
 		print "</td>";
