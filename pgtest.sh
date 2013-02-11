@@ -6,7 +6,7 @@ if [ "$#" -ne 1 ]; then
 else
 	cd ../postgresql-9.2.2
 	echo "Building $1"
-	(make && make install) > /dev/null
+	make && (make install > /dev/null)
 	if [ $? -eq 0 ]; then 
 		cd ../hw1
 		buffSize=16
