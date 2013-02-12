@@ -17,12 +17,18 @@ else
 				for i in `seq 1 3`; do
 					echo "Iteration $i"
 					~/pgsql/bin/psql test -p 4444 -c "SELECT blks_read,blks_hit FROM pg_stat_database WHERE datname='test';" > pre
+					sleep 1s;
 					~/pgsql/bin/psql test -p 4444 -c "SELECT * FROM raw_r_tuples;" > tuples
+					sleep 1s;
 					~/pgsql/bin/psql test -p 4444 -c "SELECT blks_read,blks_hit FROM pg_stat_database WHERE datname='test';" > post
+					sleep 1s;
 					./stripper.pl pre post > tf.$buffSize.$1.$i.q1
 					~/pgsql/bin/psql test -p 4444 -c "SELECT blks_read,blks_hit FROM pg_stat_database WHERE datname='test';" > pre
+					sleep 1s;
 					~/pgsql/bin/psql test -p 4444 -c "SELECT * FROM raw_r_tuples r, raw_s_tuples s WHERE r.pkey = s.pkey;" > tuples
+					sleep 1s;
 					~/pgsql/bin/psql test -p 4444 -c "SELECT blks_read,blks_hit FROM pg_stat_database WHERE datname='test';" > post
+					sleep 1s;
 					./stripper.pl pre post > tf.$buffSize.$1.$i.q2
 				done
 			fi

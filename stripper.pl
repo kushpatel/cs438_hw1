@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+my $preRead, $preHit;
 open F, $ARGV[0] or die $!;
 while (<F>) {
     $_ =~ /\s*(\d+)\s*\|\s*(\d+)/;
@@ -6,7 +7,8 @@ while (<F>) {
     $preHit = $2;
 }
 close F;
-my $preRead, $preHit, $diffRead, $diffHit;
+my $diffRead, $diffHit;
+print "preRead: $preRead, preHit: $preHit, diffRead: $diffRead, diffHit: $diffHit\n";
 open B, $ARGV[1] or die $!;
 while (<B>) {
     $_ =~ /\s*(\d+)\s*\|\s*(\d+)/;
