@@ -8,7 +8,6 @@ while (<F>) {
 }
 close F;
 my $diffRead, $diffHit;
-print "preRead: $preRead, preHit: $preHit, diffRead: $diffRead, diffHit: $diffHit\n";
 open B, $ARGV[1] or die $!;
 while (<B>) {
     $_ =~ /\s*(\d+)\s*\|\s*(\d+)/;
