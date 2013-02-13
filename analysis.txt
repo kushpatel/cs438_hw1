@@ -1,0 +1,2 @@
+Clock and LRU strategies were very close in comparison across all the different number of buffers used (bufnum). This is expected because the clock strategy closely approximates LRU. On the other hand, MRU strategy differed significantly from clock and LRU when the bufnum was smaller.  As the bufnum became larger there was no noticeable difference across all the three strategies.
+
