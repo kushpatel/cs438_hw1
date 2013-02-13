@@ -1,8 +1,6 @@
 #!/usr/bin/perl
 
-my @strategies = @ARGV ? ( $ARGV[1] ) : ('clock', 'lru', 'mru');
-
-print STDERR "$ARGV[0]";
+my @strategies = @ARGV == 2 ? ( $ARGV[1] ) : ('clock', 'lru', 'mru');
 
 print <<HTML;
 <html>

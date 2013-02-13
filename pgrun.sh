@@ -9,4 +9,4 @@ for strat in "${strats[@]}"; do
 done
 ./printer.pl q1 > results1.html
 ./printer.pl q2 > results2.html
-rm tf*
+# rm tf*
